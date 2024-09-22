@@ -1,5 +1,5 @@
 <?php 
-
+//Change something inside the database
 
 
 class SingupContr {
@@ -9,19 +9,22 @@ class SingupContr {
     private $pwdRepeat;
     private $email;
 
-    //Data from the user : public function __construc($uid, $pwd, $pwdRepeat, $email)
+    //Data from the user : ($uid, $pwd, $pwdRepeat, $email)
     public function __construc($uid, $pwd, $pwdRepeat, $email){
-        //this->properties
-        $this->uid = $uid;
+        //this->properties = User_data
+        $this->uid = $uid; 
         $this->pwd = $pwd;
         $this->pwdRepeat = $pwdRepeat;
         $this->email = $email;
 
     }
 
-    //Basic error handling
+
+
+
+    //Basic error handling to throw error messages
     private function emptyInput() {
-        $result = false;
+        
 
         if(empty($this->uid) ||empty($this->pwd)  || empty($this->pwdRepeat) || empty($this->email)){
             $result = false;
@@ -34,9 +37,9 @@ class SingupContr {
 
     private function invalidUid() {
 
-            $result = false;
-            if (!preg_match("/^[a-zA-Z0-9]*$/", $this->uid))
-            {
+            
+            if (!preg_match("/^[a-zA-Z0-9]*$/", $this->uid)) //checking if only these characters exist inside the username
+            {                                                  //!preg_match("/^[a-zA-Z0-9]*$/", $this->uid) : "Si el "username" no cumple con el patrón"
                 $result = false;
             }
             else
@@ -47,10 +50,10 @@ class SingupContr {
         }
 
 
-
+        // Verifica si el correo no tiene un formato válido
         private function invalidEmail() {
-            $result = false;
-            if (!filter_var($this->email, FILTER_VALIDATE_EMAIL))
+            
+            if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) //filter_var : Retorna true si el correo tiene un formato correcto
             {
             $result = false;
             }
@@ -63,7 +66,7 @@ class SingupContr {
 
         private function pwdMatch(){
 
-            $result = false;
+            
             if($this->pwd !== $this->pwdRepeat)
             {    
                 $result = false;
