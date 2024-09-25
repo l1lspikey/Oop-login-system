@@ -1,3 +1,8 @@
+<?php 
+
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +31,7 @@
         <p>Don't have an account yet? Sign up here!</p>
         <form action="includes/login.inc.php" method="post">
             <input type="text" name="uid" placeholder="Username"><br>
-            <input type=" password" name="pwd" placeholder="Password"><br> 
+            <input type="password" name="pwd" placeholder="Password"><br> 
             <br>
             <button type="submit" name="submit">LOGIN</button>
         </form>
